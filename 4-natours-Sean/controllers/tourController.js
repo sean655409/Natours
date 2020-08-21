@@ -11,14 +11,6 @@ exports.aliasTopTour = (req, res, next) => {
     req.query.sort = 'price';
     next();
 };
-/*
-const catchAsync = fn => {
-    //fn(req, res, next).catch(next);
-    return (req, res, next) => {
-        fn(req, res, next).catch(next);
-    };
-};
-*/
 
 exports.getAllTour = catchAsync(async (req, res, next) => {
     const features = new APIFeatures(Tour.find(), req.query)

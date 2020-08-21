@@ -21,11 +21,11 @@ router.route('/monthly-plan/:year').get(tourController.getMonthlyPlan);
 router
     .route('/')
     .get(authController.protect, tourController.getAllTour)
-    .post(tourController.createTour); // 按順序執行MiddleWare
+    .post(authController.protect, tourController.createTour); // 按順序執行MiddleWare
 router
     .route('/:id')
-    .get(tourController.getTour)
-    .patch(tourController.patchTour)
+    .get(authController.protect, tourController.getTour)
+    .patch(authController.protect, tourController.patchTour)
     .delete(
         authController.protect,
         authController.restrictTo('admin', 'guide-leader'),
